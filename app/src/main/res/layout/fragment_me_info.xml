@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class="com.guangzhou.liuliang.appframework.Bind.MyInfo">
+        <import type="com.guangzhou.liuliang.appframework.Bind.MeInfoData"/>
+        <variable
+            name="MeInfo"
+            type="MeInfoData"/>
+    </data>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/me_info_back"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/avatar_image"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"
+            android:src="@drawable/logo_wechat"
+            app:setImage="@{MeInfo.avatarUrl}"
+            android:layout_marginTop="170dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            />
+
+
+    <TextView
+        android:id="@+id/nick_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/avatar_image"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:text="@{MeInfo.userName}"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/info_detail"
+        android:layout_below="@+id/nick_name"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="16dp"
+            android:onClick="@{MeInfo.concernBtnClick}"
+            android:text="关注"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="6dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{MeInfo.concernBtnClick}"
+            android:text="@{String.valueOf(MeInfo.concernCount)}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:gravity="end"
+            android:textSize="16dp"
+            android:onClick="@{MeInfo.fansClick}"
+            android:text="粉丝"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="6dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{MeInfo.fansClick}"
+            android:text="@{String.valueOf(MeInfo.fansCount)}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:gravity="end"
+            android:textSize="16dp"
+            android:onClick="@{MeInfo.likeItClick}"
+            android:text="喜爱"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="6dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{MeInfo.likeItClick}"
+            android:text="@{String.valueOf(MeInfo.likeItCount)}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:gravity="end"
+            android:textSize="16dp"
+            android:onClick="@{MeInfo.publishClick}"
+            android:text="发布"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="6dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{MeInfo.publishClick}"
+            android:text="@{String.valueOf(MeInfo.publishCount)}"/>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/info_detail">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/reference"
+            android:layout_centerInParent="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_back"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@id/reference"
+            android:textSize="24sp"
+            android:id="@+id/login"
+            android:onClick="@{MeInfo.LoginBtnClick}"
+            android:text="@{MeInfo.loadBtnText}"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_back"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/reference"
+                android:textSize="24sp"
+                android:id="@+id/publish"
+                android:onClick="@{MeInfo.publishBtnClick}"
+                android:text="发布"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
+</layout>

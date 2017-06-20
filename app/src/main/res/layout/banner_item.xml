@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class="com.guangzhou.liuliang.appframework.Bind.BannerBind">
+        <import type="com.guangzhou.liuliang.appframework.Bind.BannerItemData"/>
+        <variable
+            name="data"
+            type="BannerItemData"/>
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:id="@+id/imageViewBanner"
+        android:layout_gravity="center_vertical"
+        android:onClick="@{data.onBannerClick}"
+        app:set_image="@{data.bannerImageUrl}"/>
+</LinearLayout>
+</layout>

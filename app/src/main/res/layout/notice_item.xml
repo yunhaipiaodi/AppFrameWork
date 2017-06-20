@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class="com.guangzhou.liuliang.appframework.Bind.ItemNotice">
+        <import type="com.guangzhou.liuliang.appframework.Bind.NoticeItemData"/>
+        <import type="android.view.View"/>
+        <variable
+            name="noticeData"
+            type="NoticeItemData"/>
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="@{noticeData.onClick}"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="6dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="60dp"
+                android:id="@id/avatar_image"
+                android:layout_height="60dp"
+                app:set_image="@{noticeData.imageUri}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:id="@+id/notice_name"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/avatar_image"
+                android:text="@{noticeData.name}"/>
+            <TextView
+                android:layout_toRightOf="@id/avatar_image"
+                android:layout_marginLeft="8dp"
+                android:id="@+id/notice_content"
+                android:layout_below="@+id/notice_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text="@{noticeData.message}"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="3dp"
+                android:visibility="@{noticeData.unReadMessage == 0?View.GONE:View.VISIBLE}"
+                android:layout_alignBaseline="@id/notice_name">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/little_point"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:layout_centerInParent="true"
+                    android:text="@{String.valueOf(noticeData.unReadMessage)}"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
+</layout>

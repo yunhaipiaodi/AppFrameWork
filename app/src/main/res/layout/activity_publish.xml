@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.guangzhou.liuliang.appframework.Activity.PublishActivity">
+
+
+
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="96sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/publish_content"
+        android:inputType="textMultiLine"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/preview_image"
+        android:layout_toLeftOf="@+id/preview_image"
+        android:layout_alignParentLeft="true"
+        android:hint="请在这里输入内容..."
+        android:visibility="gone"
+        android:gravity="top" />
+
+    <ImageView
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:id="@+id/preview_image"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/weixin_button"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发布"
+        android:id="@+id/button_publish"
+        android:layout_below="@+id/publish_content"
+        android:layout_alignRight="@+id/publish_content"
+        android:layout_alignEnd="@+id/publish_content"
+        android:visibility="gone"
+        android:layout_marginTop="60dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="相机"
+        android:id="@+id/from_camera"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="本地图片"
+        android:id="@+id/from_local"
+        android:layout_marginTop="49dp"
+        android:layout_below="@+id/from_camera"
+        android:layout_alignLeft="@+id/from_camera"
+        android:layout_alignStart="@+id/from_camera" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/notice"
+        android:text="请选择类别："
+        android:visibility="gone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/spinner"
+       />
+
+    <Spinner
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/publish_content"
+        android:visibility="gone"
+        android:layout_toRightOf="@+id/notice"
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class="com.guangzhou.liuliang.appframework.Bind.MainListItem">
+        <import type="com.guangzhou.liuliang.appframework.Bind.BindListItem"/>
+        <import type="com.guangzhou.liuliang.appframework.Bind.BindCommentData" />
+        <import type="java.util.List"/>
+        <import type="android.view.View"/>
+        <variable
+            name="ListItemData"
+            type="BindListItem"/>
+        <variable
+            name="StubCommentData"
+            type="List&lt;BindCommentData>"/>
+    </data>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:orientation="horizontal"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/avatar_image"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#FF000000"
+                    app:set_avatar="@{ListItemData.avatarUrl}"
+                    android:onClick="@{ListItemData.transToUserInfo}"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="16dp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        android:onClick="@{ListItemData.transToUserInfo}"
+                        android:text="@{ListItemData.userName}"
+                        />
+
+                 <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="14dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:textColor="#14e715"
+                        android:visibility="@{ListItemData.hasConcern ? View.GONE : View.VISIBLE}"
+                        android:background="@drawable/collect_btn"
+                        android:onClick="@{ListItemData.collectBtnClick}"
+                        android:text="关 注"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:onClick="@{ListItemData.transToSourceImage}"
+                android:id="@+id/mainImage"
+                app:set_content_image="@{ListItemData.imageUrl}"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:text = "@{ListItemData.content}"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="4dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="@{ListItemData.LikeItBtnClick}"
+                    android:src="@drawable/dashboard_like_off_default"
+                    app:like_it_back="@{ListItemData.hasLikeIt}"
+                    />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="32dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="@{ListItemData.CommentItBtnClick}"
+                    android:src="@drawable/dashboard_reply_default"
+                    />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="32dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="@{ListItemData.ShareItBtnClick}"
+                    android:src="@drawable/dashboard_reblog_default"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/conner_bg"
+                        android:padding="2dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="@{ListItemData.LikeUserBtnClick}"
+                        app:like_count="@{ListItemData.likeUserCount}"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="32dp"
+                        android:background="@drawable/conner_bg"
+                        android:padding="2dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="@{ListItemData.CommentBtnClick}"
+                        app:comment_count="@{ListItemData.commentCount}" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:text="@{ListItemData.insertTime}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/comment1"
+                android:visibility="@{StubCommentData[0] == null ? View.GONE : View.VISIBLE}"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="4dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:textColor="#2D64B3"
+                        android:onClick="@{StubCommentData[0].transToUserInfo}"
+                        app:set_nickname="@{StubCommentData[0].userName}"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:onClick="@{ListItemData.CommentItBtnClick}"
+                        android:text="@{StubCommentData[0].content}"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layerType="software"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/line_shape"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/comment2"
+                android:visibility="@{StubCommentData[1] == null ? View.GONE : View.VISIBLE}"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="4dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:textColor="#2D64B3"
+                        android:onClick="@{StubCommentData[1].transToUserInfo}"
+                        app:set_nickname="@{StubCommentData[1].userName}"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:onClick="@{ListItemData.CommentItBtnClick}"
+                        android:text="@{StubCommentData[1].content}"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layerType="software"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/line_shape"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/comment3"
+                android:visibility="@{StubCommentData[2] == null ? View.GONE : View.VISIBLE}"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="4dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:textColor="#2D64B3"
+                        android:onClick="@{StubCommentData[2].transToUserInfo}"
+                        app:set_nickname="@{StubCommentData[2].userName}"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:onClick="@{ListItemData.CommentItBtnClick}"
+                        android:text="@{StubCommentData[2].content}"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layerType="software"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/line_shape"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+</layout>

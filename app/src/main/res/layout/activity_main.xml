@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data class="com.guangzhou.liuliang.appframework.Bind.MainTotalNotice">
+        <import type="com.guangzhou.liuliang.appframework.Bind.NoticeItemDataArray"/>
+        <import type="android.view.View"/>
+        <variable
+            name="Data"
+            type="NoticeItemDataArray"/>
+    </data>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main_coordinator_layout">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainActivity">
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager_content"
+        android:layout_above="@+id/shadow_line" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:id="@+id/shadow_line"
+        android:background="@drawable/my_shadow"
+        android:layout_above="@+id/buttomNavigation">
+
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/buttomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView_home"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/home_middle" />
+
+
+
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageView_userInfo"
+                android:src="@drawable/people_off"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="28dp"
+                android:layout_marginEnd="28dp"
+                android:layout_centerVertical="true"
+                />
+
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_centerVertical="true">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="21dp"
+                    android:visibility="@{Data.totalUnReadMessage == 0?View.GONE:View.VISIBLE}">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/little_point"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffffff"
+                        android:layout_centerInParent="true"
+                        android:text="@{String.valueOf(Data.totalUnReadMessage)}"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/imageView_notice"
+                    android:src="@drawable/bell_off"
+                    android:clickable="true"
+                    android:focusable="true"
+                    />
+            </RelativeLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

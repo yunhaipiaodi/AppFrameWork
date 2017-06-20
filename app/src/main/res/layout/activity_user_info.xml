@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data class="com.guangzhou.liuliang.appframework.Bind.MyUserInfo">
+        <import type="com.guangzhou.liuliang.appframework.Bind.UserInfoData"/>
+        <import type="android.view.View"/>
+        <variable
+            name="UserInfo"
+            type="UserInfoData"/>
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/me_info_back"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/avatar_image"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"
+            android:src="@drawable/logo_wechat"
+            app:set_image="@{UserInfo.avatarUrl}"
+            android:layout_marginTop="170dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            />
+
+
+        <TextView
+            android:id="@+id/nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/avatar_image"
+            android:layout_marginTop="8dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="@{UserInfo.userName}"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/info_detail"
+            android:layout_below="@+id/nick_name"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:textSize="16dp"
+                android:onClick="@{UserInfo.concernClick}"
+                android:text="关注"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="16dp"
+                android:textColor="#000000"
+                android:layout_marginLeft="6dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{UserInfo.concernClick}"
+                android:text="@{String.valueOf(UserInfo.concernCount)}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:gravity="end"
+                android:textSize="16dp"
+                android:onClick="@{UserInfo.fansClick}"
+                android:text="粉丝"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="16dp"
+                android:textColor="#000000"
+                android:layout_marginLeft="6dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{UserInfo.fansClick}"
+                android:text="@{String.valueOf(UserInfo.fansCount)}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:gravity="end"
+                android:textSize="16dp"
+                android:onClick="@{UserInfo.likeItClick}"
+                android:text="喜爱"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="16dp"
+                android:textColor="#000000"
+                android:layout_marginLeft="6dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{UserInfo.likeItClick}"
+                android:text="@{String.valueOf(UserInfo.likeItCount)}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:gravity="end"
+                android:textSize="16dp"
+                android:onClick="@{UserInfo.publishClick}"
+                android:text="发布"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="16dp"
+                android:textColor="#000000"
+                android:layout_marginLeft="6dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{UserInfo.publishClick}"
+                android:text="@{String.valueOf(UserInfo.publishCount)}"/>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/info_detail"
+            android:layout_marginTop="16dp">
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/talk_btn"
+                android:text="聊天"
+                android:onClick="@{UserInfo.talkBtnClick}"
+                android:visibility="@{UserInfo.mySelf?View.GONE:View.VISIBLE}"
+                android:textSize="20sp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:onClick="@{UserInfo.concernBtnClick}"
+                android:background="@drawable/concern_btn"
+                app:set_background="@{UserInfo.hasConcern}"
+                android:visibility="@{UserInfo.mySelf?View.GONE:View.VISIBLE}"
+                android:text="关注"
+                android:textSize="20sp"/>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>
